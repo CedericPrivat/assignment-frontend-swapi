@@ -36,6 +36,7 @@
             "style": "camelCase"
           }
         ],
+        "arrow-body-style": "off",
         "curly": [
           "error",
           "multi-line"
