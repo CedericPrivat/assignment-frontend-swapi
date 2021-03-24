@@ -27,7 +27,7 @@ export class CharacterService {
     return this.characters$;
   }
 
-  getById(id: string) {
+  getById(id: string): Observable<Character> {
     const url = `${environment.apiUrl}/people/${id}/`;
     return this._httpClient.get<Character>(Helper.changeUrlToHttps(url));
   }

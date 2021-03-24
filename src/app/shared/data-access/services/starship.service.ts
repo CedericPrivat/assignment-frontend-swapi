@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Helper } from '@shared/helper/utilities/helper';
+import { Observable } from 'rxjs';
 import { Starship } from '../models/starship';
 
 @Injectable({
@@ -9,7 +10,7 @@ import { Starship } from '../models/starship';
 export class StarshipService {
   constructor(private _httpClient: HttpClient) { }
 
-  getByUrl(url: string) {
+  getByUrl(url: string): Observable<Starship> {
     return this._httpClient.get<Starship>(Helper.changeUrlToHttps(url));
   }
 }
