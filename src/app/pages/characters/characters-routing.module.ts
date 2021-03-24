@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CharactersComponent } from './characters/characters.component';
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 import { CharacterListComponent } from './components/character-list/character-list.component';
+import { CharactersResolver } from './resolvers/characters.resolver';
 
 const routes: Routes = [
   {
@@ -11,7 +12,10 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: CharacterListComponent
+        component: CharacterListComponent,
+        resolve: {
+          characters: CharactersResolver
+        }
       },
       {
         path: ':id',
