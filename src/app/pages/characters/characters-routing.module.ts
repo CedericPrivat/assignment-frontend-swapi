@@ -5,6 +5,8 @@ import { CharacterDetailsComponent } from './components/character-details/charac
 import { CharacterListComponent } from './components/character-list/character-list.component';
 import { CharacterDetailsResolver } from './resolvers/character-details.resolver';
 import { CharactersResolver } from './resolvers/characters.resolver';
+import { FilmsResolver } from './resolvers/films.resolver';
+import { SpeciesResolver } from './resolvers/species.resolver';
 
 const routes: Routes = [
   {
@@ -15,7 +17,9 @@ const routes: Routes = [
         path: '',
         component: CharacterListComponent,
         resolve: {
-          characters: CharactersResolver
+          characters: CharactersResolver,
+          films: FilmsResolver,
+          species: SpeciesResolver
         }
       },
       {
