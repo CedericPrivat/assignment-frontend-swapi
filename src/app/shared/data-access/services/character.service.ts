@@ -26,4 +26,9 @@ export class CharacterService {
     }
     return this.characters$;
   }
+
+  getById(id: string) {
+    const url = `${environment.apiUrl}/people/${id}/`;
+    return this._httpClient.get<Character>(Helper.changeUrlToHttps(url));
+  }
 }
