@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-export interface Coordinate {
+export interface Species {
   /**
    * The average height of this person in centimeters.
    */
