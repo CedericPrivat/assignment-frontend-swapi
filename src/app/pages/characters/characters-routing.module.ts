@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CharactersComponent } from './characters.component';
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 import { CharacterListComponent } from './components/character-list/character-list.component';
+import { CharacterDetailsResolver } from './resolvers/character-details.resolver';
 import { CharactersResolver } from './resolvers/characters.resolver';
 
 const routes: Routes = [
@@ -19,7 +20,10 @@ const routes: Routes = [
       },
       {
         path: ':id',
-        component: CharacterDetailsComponent
+        component: CharacterDetailsComponent,
+        resolve: {
+          characterDetails: CharacterDetailsResolver
+        }
       }
     ]
   }

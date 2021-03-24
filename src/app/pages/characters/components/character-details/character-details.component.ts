@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { CharacterDetails } from '../../models/character-details';
 
 @Component({
   selector: 'swapi-character-details',
   templateUrl: './character-details.component.html',
   styleUrls: ['./character-details.component.scss']
 })
-export class CharacterDetailsComponent implements OnInit {
+export class CharacterDetailsComponent {
+  characterDetails$: Observable<CharacterDetails | null>;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private _route: ActivatedRoute) {
+    this.characterDetails$ = this._getCharacterDetails$();
   }
 
+  private _getCharacterDetails$(): Observable<CharacterDetails | null> {
+    return this._route.data.pipe(
+      map(data => data.characterDetails as CharacterDetails)
+    );
+  }
 }
