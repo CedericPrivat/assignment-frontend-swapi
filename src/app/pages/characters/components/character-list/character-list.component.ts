@@ -13,6 +13,8 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./character-list.component.scss']
 })
 export class CharacterListComponent {
+  isBBYFrom = true;
+  isBBYTo = true;
   characters$: Observable<Character[] | null>;
   films$: Observable<Film[] | null>;
   species$: Observable<Species[] | null>;

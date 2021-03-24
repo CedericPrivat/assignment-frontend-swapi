@@ -1,5 +1,63 @@
 <div class="p-4 sm:max-w-2xl sm:m-auto">
-  <div class="grid gap-1 sm:grid-cols-2" *ngIf="characters$ | async as characters; else charactersError">
+  <div class="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+    <div class="sm:w-1/2">
+      <label class="cursor-pointer" *ngIf="films$ | async as films; else filmsError">
+        <span class="text-gray-500 font-semibold text-sm">Film</span>
+        <select class="block cursor-pointer w-full mt-1 border rounded-md border-gray-300">
+          <option [value]="" selected>All</option>
+          <option [value]="film" *ngFor="let film of films">{{film.title}}</option>
+        </select>
+      </label>
+
+      <ng-template #filmsError>
+        Films could not be loaded
+      </ng-template>
+    </div>
+
+    <div class="sm:w-1/2">
+      <label class="cursor-pointer" *ngIf="species$ | async as species; else speciesError">
+        <span class="text-gray-500 font-semibold text-sm">Species</span>
+        <select class="block cursor-pointer w-full mt-1 border rounded-md border-gray-300">
+          <option [value]="" selected>All</option>
+          <option [value]="singleSpecies" *ngFor="let singleSpecies of species">{{singleSpecies.name}}</option>
+        </select>
+      </label>
+
+      <ng-template #speciesError>
+        Species could not be loaded
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="mt-3">
+    <span class="text-gray-500 font-semibold text-sm">Birth Year</span>
+
+    <div class="flex space-x-4">
+      <label class="block w-1/2">
+        <span class="text-gray-500 font-semibold text-sm sr-only">From</span>
+        <div class="relative">
+          <input class="block w-full mt-1 border rounded-md border-gray-300 pr-28" type="text" placeholder="From" />
+          <span class="inline-flex p-1 border-l absolute top-0 bottom-0 right-0">
+            <button class="font-bold text-xs text-gray-500 px-2 py-1 rounded focus:outline-none focus:ring-1 tracking-wide" [ngClass]="{'bg-gray-200 shadow text-gray-600': isBBYFrom}" (click)="isBBYFrom = true">BBY</button>
+            <button class="font-bold text-xs text-gray-500 px-2 py-1 rounded focus:outline-none focus:ring-1 tracking-wide" [ngClass]="{'bg-gray-200 shadow text-gray-600': !isBBYFrom}" (click)="isBBYFrom = false">ABY</button>
+          </span>
+        </div>
+      </label>
+
+      <label class="block w-1/2">
+        <span class="text-gray-500 font-semibold text-sm sr-only">To</span>
+        <div class="relative">
+          <input class="block w-full mt-1 border rounded-md border-gray-300 pr-28" type="text" placeholder="To" />
+          <span class="inline-flex p-1 border-l absolute top-0 bottom-0 right-0">
+            <button class="font-bold text-xs text-gray-500 px-2 py-1 rounded focus:outline-none focus:ring-1 tracking-wide" [ngClass]="{'bg-gray-200 shadow text-gray-600': isBBYTo}" (click)="isBBYTo = true">BBY</button>
+            <button class="font-bold text-xs text-gray-500 px-2 py-1 rounded focus:outline-none focus:ring-1 tracking-wide" [ngClass]="{'bg-gray-200 shadow text-gray-600': !isBBYTo}" (click)="isBBYTo = false">ABY</button>
+          </span>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <div class="grid gap-1 sm:grid-cols-2 mt-10" *ngIf="characters$ | async as characters; else charactersError">
     <ng-container *ngIf="characters.length > 0; else noCharacters">
       <a class="p-4 text-center bg-gray-200 cursor-pointer rounded-md font-medium" *ngFor="let character of characters" [routerLink]="['./', getIdFromUrl(character.url)]">
         {{character.name}}</a>
