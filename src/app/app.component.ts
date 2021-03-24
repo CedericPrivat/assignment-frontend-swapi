@@ -5,8 +5,7 @@ import { takeWhile, filter, mapTo } from 'rxjs/operators';
 
 @Component({
   selector: 'swapi-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   isRouting$!: Observable<boolean>;

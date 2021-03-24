@@ -1,15 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'swapi-characters',
-  templateUrl: './characters.component.html',
-  styleUrls: ['./characters.component.scss']
+  templateUrl: './characters.component.html'
 })
-export class CharactersComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class CharactersComponent { }

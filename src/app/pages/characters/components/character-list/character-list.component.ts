@@ -10,8 +10,7 @@ import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'swapi-character-list',
-  templateUrl: './character-list.component.html',
-  styleUrls: ['./character-list.component.scss']
+  templateUrl: './character-list.component.html'
 })
 export class CharacterListComponent {
   getIdFromUrl = Helper.getIdFromUrl;

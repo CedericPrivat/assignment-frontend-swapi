@@ -7,8 +7,7 @@ import { CharacterDetails } from '../../models/character-details';
 
 @Component({
   selector: 'swapi-character-details',
-  templateUrl: './character-details.component.html',
-  styleUrls: ['./character-details.component.scss']
+  templateUrl: './character-details.component.html'
 })
 export class CharacterDetailsComponent {
   characterDetails$: Observable<CharacterDetails | null>;
