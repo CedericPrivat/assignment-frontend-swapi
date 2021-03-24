@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -12,8 +13,15 @@ import { CharacterDetails } from '../../models/character-details';
 export class CharacterDetailsComponent {
   characterDetails$: Observable<CharacterDetails | null>;
 
-  constructor(private _route: ActivatedRoute) {
+  constructor(
+    private _route: ActivatedRoute,
+    private _location: Location
+  ) {
     this.characterDetails$ = this._getCharacterDetails$();
+  }
+
+  goback() {
+    this._location.back();
   }
 
   private _getCharacterDetails$(): Observable<CharacterDetails | null> {
