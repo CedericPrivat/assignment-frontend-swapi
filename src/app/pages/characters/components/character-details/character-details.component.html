@@ -1,1 +1,75 @@
-<p>character-details works!</p>
+<div class="flex flex-col sm:items-center sm:justify-center sm:h-full sm:px-4">
+  <div class="bg-white shadow overflow-hidden w-full sm:max-w-xl sm:rounded-lg">
+    <div class="flex px-4 py-5 sm:px-6">
+      <h3 class="text-lg leading-6 font-medium text-gray-900">
+        Character Details
+      </h3>
+    </div>
+    <div class="border-t border-gray-200" *ngIf="characterDetails$ | async as characterDetails; else characterDetailsError">
+      <dl>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Name
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            {{characterDetails.character.name}}
+          </dd>
+        </div>
+        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Species
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2" *ngIf="characterDetails.species.length > 0; else noSpecies">
+            <ng-container *ngFor="let singleSpecies of characterDetails.species">
+              {{singleSpecies.name}}
+            </ng-container>
+          </dd>
+          <ng-template #noSpecies>
+            <dd class="mt-1 text-sm text-gray-600 sm:mt-0 sm:col-span-2">
+              No Species
+            </dd>
+          </ng-template>
+        </div>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Films
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2" *ngIf="characterDetails.films.length > 0; else noFilms">
+            <ng-container *ngFor="let film of characterDetails.films; let i = index">
+              {{film.title}}<ng-container *ngIf="i!=characterDetails.films.length-1">&#44;</ng-container>
+            </ng-container>
+          </dd>
+          <ng-template #noFilms>
+            <dd class="mt-1 text-sm text-gray-600 sm:mt-0 sm:col-span-2">
+              No Films
+            </dd>
+          </ng-template>
+        </div>
+        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">
+            Starships
+          </dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2" *ngIf="characterDetails.starships.length > 0; else noStarships">
+            <ng-container *ngFor="let starship of characterDetails.starships; let i = index">
+              {{starship.name}}<ng-container *ngIf="i!=characterDetails.starships.length-1">&#44;</ng-container>
+            </ng-container>
+          </dd>
+          <ng-template #noStarships>
+            <dd class="mt-1 text-sm text-gray-600 sm:mt-0 sm:col-span-2">
+              No Starships
+            </dd>
+          </ng-template>
+        </div>
+      </dl>
+    </div>
+
+    <ng-template #characterDetailsError>
+      <div class="flex justify-center my-12">
+        <svg class="h-6 w-6 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span class="ml-2 font-medium text-gray-700">Character details could not be loaded</span>
+      </div>
+    </ng-template>
+  </div>
+</div>
