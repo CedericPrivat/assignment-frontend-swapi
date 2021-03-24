@@ -36,10 +36,13 @@
       <label class="block w-1/2">
         <span class="text-gray-500 font-semibold text-sm sr-only">From</span>
         <div class="relative">
-          <input class="block w-full mt-1 border rounded-md border-gray-300 pr-28" type="text" placeholder="From" />
-          <span class="inline-flex p-1 border-l absolute top-0 bottom-0 right-0">
-            <button class="font-bold text-xs text-gray-500 px-2 py-1 rounded focus:outline-none focus:ring-1 tracking-wide" [ngClass]="{'bg-gray-200 shadow text-gray-600': isBBYFrom}" (click)="isBBYFrom = true">BBY</button>
-            <button class="font-bold text-xs text-gray-500 px-2 py-1 rounded focus:outline-none focus:ring-1 tracking-wide" [ngClass]="{'bg-gray-200 shadow text-gray-600': !isBBYFrom}" (click)="isBBYFrom = false">ABY</button>
+          <input class="block w-full mt-1 border rounded-md border-gray-300 pr-28" type="number" placeholder="From" [formControl]="fromBirthYearInput" />
+          <span class="p-1 border-l absolute top-0 bottom-0 right-0">
+            <input type="checkbox" id="isBBYFrom" class="hidden" [formControl]="isBBYFromCheckbox">
+            <label class="flex h-full items-center cursor-pointer" for="isBBYFrom">
+              <div class="flex items-center h-full font-bold text-xs text-gray-500 px-2 py-1 rounded focus:outline-none focus:ring-1 tracking-wide" [ngClass]="{'bg-gray-200 shadow text-gray-600': isBBYFromCheckbox.value}">BBY</div>
+              <div class="flex items-center h-full font-bold text-xs text-gray-500 px-2 py-1 rounded focus:outline-none focus:ring-1 tracking-wide" [ngClass]="{'bg-gray-200 shadow text-gray-600': !isBBYFromCheckbox.value}">ABY</div>
+            </label>
           </span>
         </div>
       </label>
@@ -47,10 +50,13 @@
       <label class="block w-1/2">
         <span class="text-gray-500 font-semibold text-sm sr-only">To</span>
         <div class="relative">
-          <input class="block w-full mt-1 border rounded-md border-gray-300 pr-28" type="text" placeholder="To" />
-          <span class="inline-flex p-1 border-l absolute top-0 bottom-0 right-0">
-            <button class="font-bold text-xs text-gray-500 px-2 py-1 rounded focus:outline-none focus:ring-1 tracking-wide" [ngClass]="{'bg-gray-200 shadow text-gray-600': isBBYTo}" (click)="isBBYTo = true">BBY</button>
-            <button class="font-bold text-xs text-gray-500 px-2 py-1 rounded focus:outline-none focus:ring-1 tracking-wide" [ngClass]="{'bg-gray-200 shadow text-gray-600': !isBBYTo}" (click)="isBBYTo = false">ABY</button>
+          <input class="block w-full mt-1 border rounded-md border-gray-300 pr-28" type="number" placeholder="To" [formControl]="toBirthYearInput" />
+          <span class="p-1 border-l absolute top-0 bottom-0 right-0">
+            <input type="checkbox" id="isBBYTo" class="hidden" [formControl]="isBBYToCheckbox">
+            <label class="flex h-full items-center cursor-pointer" for="isBBYTo">
+              <div class="flex items-center h-full font-bold text-xs text-gray-500 px-2 py-1 rounded focus:outline-none focus:ring-1 tracking-wide" [ngClass]="{'bg-gray-200 shadow text-gray-600': isBBYToCheckbox.value}">BBY</div>
+              <div class="flex items-center h-full font-bold text-xs text-gray-500 px-2 py-1 rounded focus:outline-none focus:ring-1 tracking-wide" [ngClass]="{'bg-gray-200 shadow text-gray-600': !isBBYToCheckbox.value}">ABY</div>
+            </label>
           </span>
         </div>
       </label>
