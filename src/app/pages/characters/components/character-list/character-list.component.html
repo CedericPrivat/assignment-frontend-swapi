@@ -1,1 +1,16 @@
-<p>character-list works!</p>
+<div class="p-4 sm:max-w-2xl sm:m-auto">
+  <div class="grid gap-1 sm:grid-cols-2" *ngIf="characters$ | async as characters; else charactersError">
+    <ng-container *ngIf="characters.length > 0; else noCharacters">
+      <a class="p-4 text-center bg-gray-200 cursor-pointer rounded-md font-medium" *ngFor="let character of characters" [routerLink]="['./', getIdFromUrl(character.url)]">
+        {{character.name}}</a>
+    </ng-container>
+
+    <ng-template #noCharacters>
+      No characters match the filters.
+    </ng-template>
+  </div>
+
+  <ng-template #charactersError>
+    Characters could not be loaded. Please try again.
+  </ng-template>
+</div>
