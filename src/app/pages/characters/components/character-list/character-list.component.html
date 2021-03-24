@@ -3,9 +3,9 @@
     <div class="sm:w-1/2">
       <label class="cursor-pointer" *ngIf="films$ | async as films; else filmsError">
         <span class="text-gray-500 font-semibold text-sm">Film</span>
-        <select class="block cursor-pointer w-full mt-1 border rounded-md border-gray-300">
-          <option [value]="" selected>All</option>
-          <option [value]="film" *ngFor="let film of films">{{film.title}}</option>
+        <select class="block cursor-pointer w-full mt-1 border rounded-md border-gray-300" [formControl]="filmSelect">
+          <option [value]="null" selected>All</option>
+          <option [ngValue]="film" *ngFor="let film of films">{{film.title}}</option>
         </select>
       </label>
 
@@ -17,9 +17,9 @@
     <div class="sm:w-1/2">
       <label class="cursor-pointer" *ngIf="species$ | async as species; else speciesError">
         <span class="text-gray-500 font-semibold text-sm">Species</span>
-        <select class="block cursor-pointer w-full mt-1 border rounded-md border-gray-300">
-          <option [value]="" selected>All</option>
-          <option [value]="singleSpecies" *ngFor="let singleSpecies of species">{{singleSpecies.name}}</option>
+        <select class="block cursor-pointer w-full mt-1 border rounded-md border-gray-300" [formControl]="speciesSelect">
+          <option [value]="null" selected>All</option>
+          <option [ngValue]="singleSpecies" *ngFor="let singleSpecies of species">{{singleSpecies.name}}</option>
         </select>
       </label>
 

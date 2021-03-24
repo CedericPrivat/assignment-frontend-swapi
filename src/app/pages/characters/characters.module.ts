@@ -4,12 +4,14 @@ import { CharactersRoutingModule } from './characters-routing.module';
 import { CharacterListComponent } from './components/character-list/character-list.component';
 import { CharactersComponent } from './characters.component';
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [CharacterListComponent, CharactersComponent, CharacterDetailsComponent],
   imports: [
+    CharactersRoutingModule,
     CommonModule,
-    CharactersRoutingModule
+    ReactiveFormsModule
   ]
 })
 export class CharactersModule { }
